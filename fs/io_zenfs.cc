@@ -923,6 +923,11 @@ IOStatus ZonedWritableFile::Close(const IOOptions& /*options*/,
   return CloseInternal();
 }
 
+uint64_t ZonedWritableFile::GetFileSize(const IOOptions& /*options*/,
+                                        IODebugContext* /*dbg*/) {
+  return zoneFile_->GetFileSize();
+}
+
 IOStatus ZonedWritableFile::CloseInternal() {
   if (!open) {
     return IOStatus::OK();
